@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Player>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{foreach (var el in Model)
+    {
+        <div >
+            <p>Имя: @el.Name</p>
+            <p>Фамилия: @el.Surname</p>
+            <p>Пол: @el.Sex</p>
+            <p>Дата рождения: @el.Date.ToString("dd.MM.yyyy")</p>
+            <p>Название команды: @el.Team</p>
+            <p>Страна: @el.Country</p>
+            <a class="btn btn-warning" asp-controller="Player" asp-action="Update" asp-route-id=@el.Id>Редактировать</a>
+        </div>
+    }
+
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+

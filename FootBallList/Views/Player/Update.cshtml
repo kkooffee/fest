@@ -1,0 +1,62 @@
+﻿@model PlayerModel
+@{
+    ViewData["Title"] = "Обновить";
+}
+
+<h2>Обновить</h2>
+
+
+<form asp-action="Update" method="post" asp-antiforgery="true">
+    <div>
+        <div>
+            <input hidden asp-for="player.Id" class="form-control" />
+        </div>
+        <label>Имя:</label>
+        <div>
+            <input asp-for="player.Name" class="form-control" />
+            <span asp-validation-for="player.Name" class="text-danger" />
+        </div>
+        <label>Фамилия:</label>
+        <div>
+            <input asp-for="player.Surname" class="form-control" />
+            <span asp-validation-for="player.Surname" class="text-danger" />
+        </div>
+        <label>Пол:</label>
+        <div>
+            <select asp-for="player.Sex" class="form-control">
+                <option></option>
+                <option value="М">М</option>
+                <option value="Ж">Ж</option>
+            </select>
+            <span asp-validation-for="player.Sex" class="text-danger" />
+        </div>
+        <label>Дата рождения:</label>
+        <div>
+            <input asp-for="player.Date" type="date" class="form-control" />
+            <span asp-validation-for="player.Date" class="text-danger" />
+        </div>
+        <label>Название команды:</label>
+        <div>
+            <select asp-for="player.Team" class="form-control">
+                <option></option>
+                @foreach (Team team in Model.teams)
+                {
+                    <option value="@team.Name">@team.Name</option>}
+            </select>
+            <span asp-validation-for="player.Team" class="text-danger" />
+        </div>
+        <label>Страна:</label>
+        <div>
+            <select asp-for="player.Country" class="form-control">
+                <option></option>
+                @foreach (Country country in Model.countries)
+                {
+                    <option value="@country.Name">@country.Name</option>}
+            </select>
+            <span asp-validation-for="player.Country" class="text-danger" />
+        </div>
+        <div>
+            <input class="btn-success" type="submit" value="Сохранить" />
+        </div>
+    </div>
+</form>
